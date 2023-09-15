@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - yazilimcibul.com</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="~/css/main.css" rel="stylesheet" asp-append-version="true" />
+</head>
+<body>
+    @{
+        await Html.RenderPartialAsync("_Navigation.cshtml");
+    }
+
+    <main class="h-full container mx-auto">
+        @RenderBody()
+    </main>
+
+    <script>
+
+        let accountActionBoxStatus = false;
+        const accountBtnEl = document.getElementById("accountBtn");
+        const accountActionBoxEl = document.getElementById("accountActionBox");
+
+
+        accountBtnEl.addEventListener("click", (e) => {
+            if (accountActionBoxStatus === false) {
+                accountActionBoxEl.classList.remove("invisible", "opacity-0");
+                accountActionBoxEl.classList.add("visible", "opacity-100");
+                accountActionBoxStatus = true;
+            }
+            else {
+                accountActionBoxEl.classList.remove("visible", "opacity-100");
+                accountActionBoxEl.classList.add("invisible", "opacity-0");
+                accountActionBoxStatus = false;
+            }
+        });
+
+    </script>
+</body>
+</html>

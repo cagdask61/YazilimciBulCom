@@ -1,0 +1,43 @@
+﻿<nav class="z-50 w-full h-44 lg:h-20 shadow flex flex-col lg:flex-row flex-wrap items-center justify-around">
+    <a asp-controller="Home" asp-action="Index" class="font-black text-2xl text-violet-600">yazilimcibul.com</a>
+    <div class="flex flex-col lg:flex-row flex-wrap items-center justify-center gap-y-3 lg:gap-x-5">
+        <a asp-controller="Employees" asp-action="Index"
+           class="w-32 h-12 text-violet-500 rounded-full font-semibold flex items-center justify-center bg-black/10 text-violet-600 hover:bg-black/5 transition duration-300 ease-in-out">
+            Ana
+            Sayfa
+        </a>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div>
+                <button id="accountBtn"
+                        class="w-32 h-12 text-violet-500 rounded-full font-semibold flex items-center justify-center bg-black/10 text-violet-600 hover:bg-black/5 transition duration-300 ease-in-out">
+                    <span class="pl-2">Hesabım</span>
+                    <svg class="fill-violet-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                         viewBox="0 0 24 24">
+                        <path d="M16.293 9.293 12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z"></path>
+                    </svg>
+                </button>
+                <div id="accountActionBox"
+                     class="invisible opacity-0 absolute w-32 h-auto bg-white z-50 shadow rounded flex flex-col items-center justify-center transition duration-300 ease-in-out">
+                    <a asp-controller="Accounts" asp-action="Profile"
+                       class="rounded-t w-full h-10 font-bold text-black flex items-center justify-center hover:bg-black/10 transition duration-300 ease-in-out">
+                        Profil
+                    </a>
+                    <a asp-controller="Accounts" asp-action="Logout"
+                       class="rounded-b w-full h-10 font-bold text-black flex items-center justify-center hover:bg-black/10 transition duration-300 ease-in-out">
+                        Çıkış Yap
+                    </a>
+                </div>
+            </div>
+        }
+        else
+        {
+            <a asp-controller="Auth" asp-action="Login"
+               class="w-32 h-12 text-violet-500 rounded-full font-semibold flex items-center justify-center bg-black/10 text-violet-600 hover:bg-black/5 transition duration-300 ease-in-out">
+                Giriş Yap
+            </a>
+        }
+
+
+    </div>
+</nav>

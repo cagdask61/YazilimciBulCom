@@ -1,0 +1,9 @@
+﻿html,
+body {
+    height: 100% !important;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial !important;
+}

@@ -1,0 +1,118 @@
+﻿@model ProfileModel
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<div class="bg-slate-100 h-32 lg:h-20 flex flex-col lg:flex-row items-center justify-around mt-5 rounded">
+    <div>
+        <span class="font-bold">İsim : </span>
+        <span>@Model.FirstName</span>
+    </div>
+    <div>
+        <span class="font-bold">Soyisim : </span>
+        <span>@Model.LastName</span>
+    </div>
+    <div>
+        <span class="font-bold">Ad : </span>
+        <span>@Model.Name</span>
+    </div>
+    <div>
+        <span class="font-bold">Takma İsim : </span>
+        <span>@Model.NickName</span>
+    </div>
+</div>
+
+
+
+@if (Model.EmployeeGetByNameDto == null)
+{
+    <div class="flex items-center justify-center">
+        <div class="mt-5 bg-slate-50 h-44 w-9/12 rounded flex flex-col items-center justify-around lg:flex-row lg:h-16">
+            <span class="text-lg text-center">Aday olmak istiyorsanız aday başvurusu yapabilirsiniz.</span>
+            <a asp-controller="Employees" asp-action="Join"
+               class="bg-green-500 hover:bg-green-400 w-28 h-10 flex items-center justify-center rounded font-bold text-white cursor-pointer">Başvur</a>
+        </div>
+    </div>
+
+    <div class="flex items-center justify-center h-full">
+        <img src="~/undraw_add_information_j2wg.svg" class="w-9/12 h-9/12 lg:w-6/12 lg:h-6/12" alt="info" />
+    </div>
+}
+else
+{
+    <div class="w-full h-full mt-10">
+        <div class="flex flex-col lg:flex-row items-center justify-around bg-slate-50 h-44 lg:h-16 rounded">
+            <span class="text-lg font-bold text-center">
+                Aday hesabınızı silebilir veya güncelleyebilirsiniz.
+            </span>
+            <div class="flex flex-row items-center justify-center gap-x-5">
+                <a asp-controller="Employees" asp-action="DeleteProfile"
+                   class="bg-red-500 w-28 h-10 flex items-center justify-center rounded font-bold text-white cursor-pointer hover:bg-red-400">Sil</a>
+                <a asp-controller="Employees" asp-action="Update"
+                   class="bg-green-500 w-28 h-10 flex items-center justify-center rounded font-bold text-white cursor-pointer hover:bg-green-400">Güncelle</a>
+            </div>
+        </div>
+        <div class="flex items-center justify-center mt-10">
+            <img class="w-56 h-56 object-cover rounded-full"
+                 src="@Model.EmployeeGetByNameDto.PhotoUrl" alt="">
+        </div>
+        <div class="h-full flex flex-col items-center gap-y-10">
+            <div class="px-4 py-4 rounded mt-10">
+                <span class="font-bold">İsim - Soyisim : </span>
+                <span class="bg-sky-50 px-2 py-2 rounded text-lg">
+                    @Model.EmployeeGetByNameDto.FirstName - @Model.EmployeeGetByNameDto.LastName
+                </span>
+            </div>
+            <div class="px-4 py-4 rounded">
+                <span class="font-bold">E-Posta : </span>
+                <span class="bg-sky-50 px-2 py-2 rounded text-lg">
+                    @Model.EmployeeGetByNameDto.Email
+                </span>
+            </div>
+            <div class="px-4 py-4 rounded">
+                <span class="font-bold">Telefon : </span>
+                <span class="bg-sky-50 px-2 py-2 rounded text-lg">
+                    @Model.EmployeeGetByNameDto.PhoneNumber
+                </span>
+            </div>
+            <div class="px-4 py-4 rounded">
+                <span class="font-bold">İkametgah : </span>
+                <span class="bg-sky-50 px-2 py-2 rounded text-lg">
+                    @Model.EmployeeGetByNameDto.ProvinceName
+                </span>
+            </div>
+            <div class="px-4 py-4 rounded">
+                <span class="font-bold">Alanı : </span>
+                <span class="bg-sky-50 px-2 py-2 rounded text-lg">
+                    @Model.EmployeeGetByNameDto.DepartmentName
+                </span>
+            </div>
+            <div class="px-4 py-4 rounded">
+                <span class="font-bold">Yaş : </span>
+                <span class="bg-sky-50 px-2 py-2 rounded text-lg">
+                    @Model.EmployeeGetByNameDto.Age
+                </span>
+            </div>
+            <div class="px-4 py-4 rounded">
+                <span class="font-bold">Maaş Beklentisi : </span>
+                <span class="bg-sky-50 px-2 py-2 rounded text-lg">
+                    @Model.EmployeeGetByNameDto.SalaryExpectation
+                </span>
+            </div>
+            <div class="px-4 py-4 rounded">
+                <span class="font-bold">Cinsiyet : </span>
+                <span class="bg-sky-50 px-2 py-2 rounded text-lg">
+                    @(Model.EmployeeGetByNameDto.Gender == true ? "Kadın" : "Erkek")
+                    
+                </span>
+            </div>
+            <div class="px-4 py-4 rounded">
+                <span class="font-bold">Hakkında : </span>
+                <span class="bg-sky-50 px-2 py-2 rounded text-lg">
+                    @Model.EmployeeGetByNameDto.Description
+                </span>
+            </div>
+        </div>
+
+    </div>
+}

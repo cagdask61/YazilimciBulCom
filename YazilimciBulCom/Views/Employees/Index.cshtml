@@ -1,0 +1,72 @@
+﻿@model EmployeeModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<form asp-action="Filter" asp-controller="Employees" method="get" class="w-full mt-10 flex flex-col gap-y-10 items-center justify-center md:flex-row md:gap-x-10  ">
+    <div class="w-auto h-auto">
+        <label for="province" class="block font-bold pl-2">İl</label>
+        <select name="Province" asp-items="Model.Provinces" class="w-52 cursor-pointer rounded-lg px-5 py-3 shadow-lg appearance-none outline-violet-300">
+            <option value="0">Hepsi</option>
+        </select>
+        <label for="province" class="absolute mt-5 -ml-8">
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24">
+                <path d="M11.178 19.569a.998.998 0 0 0 1.644 0l9-13A.999.999 0 0 0 21 5H3a1.002 1.002 0 0 0-.822 1.569l9 13z">
+                </path>
+            </svg>
+        </label>
+    </div>
+    <div class="w-auto h-auto">
+        <label for="department" class="block font-bold pl-2">Departman</label>
+        <select name="Department" asp-items="Model.Departments" class="w-72 cursor-pointer rounded-lg px-5 py-3 shadow-lg appearance-none outline-violet-300">
+            <option value="0">Hepsi</option>
+        </select>
+        <label for="department" class="absolute mt-5 -ml-8">
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24">
+                <path d="M11.178 19.569a.998.998 0 0 0 1.644 0l9-13A.999.999 0 0 0 21 5H3a1.002 1.002 0 0 0-.822 1.569l9 13z">
+                </path>
+            </svg>
+        </label>
+    </div>
+    <button class="mt-5 bg-green-400 w-32 h-10 font-bold rounded text-white hover:bg-green-500 transition duration-300 ease-in-out">
+        Filtrele
+    </button>
+</form>
+@if (Model.Employees.Count() > 0)
+{
+    <div class="mt-20 flex flex-col items-center gap-y-10 lg:grid lg:grid-cols-2 xl:grid-cols-3">
+        @foreach (var employee in Model.Employees)
+        {
+            <a asp-controller="Employees" asp-action="Detail" asp-route-employeeId="@employee.EmployeeId" class="w-96 h-24 bg-white shadow flex flex-row items-center gap-x-5 cursor-pointer hover:shadow-md">
+                <img class="object-cover rounded-full ml-5 w-14 h-14"
+                     src="@employee.PhotoUrl"
+                     alt="profile_photo" width="56" height="56">
+                <div class="">
+                    <div class="font-bold text-lg">@employee.FirstName @employee.LastName</div>
+                    <p class="pl-2"> @employee.ProvinceName - @employee.DepartmentName</p>
+                </div>
+            </a>
+        }
+    </div>
+}
+else
+{
+    <div class="flex flex-col items-center w-full h-96 gap-y-10 mt-5">
+        <div class="text-2xl text-red-500 pt-10">Filtrenize uygun aday bulunamadı.</div>
+        <img src="~/undraw_no_data_re_kwbl.svg" alt="svg" class="w-52 h-52">
+    </div>
+}
+
+
+@*
+<div id="pagination" class="mt-10 w-full flex flex-row items-center justify-center gap-x-2">
+    <button class="rounded-full w-10 h-10 bg-white shadow-lg hover:bg-black/5 font-bold">
+        1
+    </button>
+    <button class="rounded-full w-10 h-10 bg-white shadow-lg hover:bg-black/5 font-bold">
+        2
+    </button>
+    <button class="rounded-full w-10 h-10 bg-white shadow-lg hover:bg-black/5 font-bold">
+        3
+    </button>
+</div>*@

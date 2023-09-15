@@ -1,0 +1,95 @@
+﻿@model EmployeeModel
+@{
+    ViewData["Title"] = "Join";
+}
+
+<div class="flex flex-col items-center h-full">
+    <div class="w-full lg:w-4/12 h-auto px-4 py-4 bg-white shadow mt-10 rounded">
+        <h1 class="text-center text-2xl font-bold">Başvur</h1>
+        <div class="flex items-center justify-center mt-10">
+            <form class="flex flex-col items-center justify-center gap-y-5" method="post" asp-controller="Employees" asp-action="CreateProfile">
+                <div class="flex flex-col">
+                    <label for="email">E-Posta</label>
+                    <input type="email" name="Email" id="email"
+                           class="rounded pl-2 h-8 outline-purple-300 bg-white border border-purple-300">
+                </div>
+                <div class="flex flex-col">
+                    <label for="phoneNumber">Telefon Numarası</label>
+                    <input type="text" name="PhoneNumber" id="phoneNumber"
+                           class="rounded pl-2 h-8 outline-purple-300 bg-white border border-purple-300">
+                </div>
+                <div class="flex flex-col">
+                    <label for="firstName">İsim</label>
+                    <input type="text" name="FirstName" id="firstName"
+                           class="rounded pl-2 h-8 outline-purple-300 bg-white border border-purple-300">
+                </div>
+                <div class="flex flex-col">
+                    <label for="lastName">Soyisim</label>
+                    <input type="text" name="LastName" id="lastName"
+                           class="rounded pl-2 h-8 outline-purple-300 bg-white border border-purple-300">
+                </div>
+                <div class="flex flex-col">
+                    <label for="salaryExpectation">Maaş Beklentisi</label>
+                    <input type="number" name="SalaryExpectation" id="salaryExpectation"
+                           class="rounded pl-2 h-8 outline-purple-300 bg-white border border-purple-300">
+                </div>
+                <div class="flex flex-col">
+                    <label for="photoUrl">Profil Fotoğrafı Link</label>
+                    <input type="text" name="PhotoUrl" id="photoUrl"
+                           class="rounded pl-2 h-8 outline-purple-300 bg-white border border-purple-300">
+                </div>
+                <div class="flex flex-col">
+                    <label for="age">Yaş</label>
+                    <input type="number" name="Age" id="age"
+                           class="rounded pl-2 h-8 outline-purple-300 bg-white border border-purple-300">
+                </div>
+                <div class="w-auto h-auto">
+                    <label for="province" class="block font-bold pl-2">İl</label>
+                    <select id="province" name="Province" asp-items="Model.Provinces" class="w-52 cursor-pointer rounded-lg px-5 py-3 shadow-lg appearance-none outline-violet-300"></select>
+                    <label for="province" class="absolute mt-5 -ml-8">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24">
+                            <path d="M11.178 19.569a.998.998 0 0 0 1.644 0l9-13A.999.999 0 0 0 21 5H3a1.002 1.002 0 0 0-.822 1.569l9 13z">
+                            </path>
+                        </svg>
+                    </label>
+                </div>
+                <div class="w-auto h-auto">
+                    <label for="department" class="block font-bold pl-2">Departman</label>
+                    <select id="department" name="Department" asp-items="Model.Departments" class="w-72 cursor-pointer rounded-lg px-5 py-3 shadow-lg appearance-none outline-violet-300"></select>
+                    <label for="department" class="absolute mt-5 -ml-8">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24">
+                            <path d="M11.178 19.569a.998.998 0 0 0 1.644 0l9-13A.999.999 0 0 0 21 5H3a1.002 1.002 0 0 0-.822 1.569l9 13z">
+                            </path>
+                        </svg>
+                    </label>
+                </div>
+                <div class="w-auto h-auto">
+                    <label for="gender" class="block font-bold pl-2">Cinsiyet</label>
+                    <select id="gender" name="Gender" class="w-72 cursor-pointer rounded-lg px-5 py-3 shadow-lg appearance-none outline-violet-300">
+                        <option value="false">Erkek</option>
+                        <option value="true">Kadın</option>
+                    </select>
+                    <label for="department" class="absolute mt-5 -ml-8">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24">
+                            <path d="M11.178 19.569a.998.998 0 0 0 1.644 0l9-13A.999.999 0 0 0 21 5H3a1.002 1.002 0 0 0-.822 1.569l9 13z">
+                            </path>
+                        </svg>
+                    </label>
+                </div>
+                <div class="flex flex-col">
+                    <label for="description">Hakkımda</label>
+                    <textarea name="Description" id="description"
+                              class="w-full rounded pl-2 h-8 outline-purple-300 bg-white border border-purple-300">
+                            </textarea>
+                </div>
+                <div>
+                    <button type="submit"
+                            class="bg-green-400 w-28 h-10 flex items-center justify-center rounded font-bold text-white cursor-pointer">
+                        Gönder
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
